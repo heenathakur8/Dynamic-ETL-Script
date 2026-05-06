@@ -31,8 +31,7 @@ It extracts data from a MySQL database, applies transformations, and loads it in
  1. Clone the repository
 
 bash
-git clone https://github.com/your-username/etl-clickhouse-pipeline.git
-cd etl-clickhouse-pipeline
+git clone https://github.com/heenathakur8/Dynamic-ETL-Script.git 
 
 
 ---
