@@ -35,7 +35,14 @@ CH_DATABASE = "default"
 # Logging
 # -------------------------------
 logging.basicConfig(level=logging.INFO)
-
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.FileHandler("etl.log"),
+        logging.StreamHandler()
+    ]
+)
 # -------------------------------
 # CONNECTORS
 # -------------------------------
@@ -98,7 +105,7 @@ def map_dtype(dtype):
 # -------------------------------
 def create_table(client, df, table_name):
     columns = []
-     # 🔥 ADD THIS LINE HERE
+    
     client.command(f"DROP TABLE IF EXISTS {CH_DATABASE}.{table_name}")
 
     for col, dtype in df.dtypes.items():
@@ -122,7 +129,7 @@ def create_table(client, df, table_name):
 # -------------------------------
 
 def load(client, df, table_name):
-    # 🔥 Convert to list of rows (correct format)
+   
     data = df.values.tolist()
 
     client.insert(
